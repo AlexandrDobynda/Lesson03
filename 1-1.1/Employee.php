@@ -7,7 +7,10 @@
  */
 
 namespace lesson03;
-
+/**
+ * Class Employee
+ * @package lesson03
+ */
 
 class Employee extends Human
 {
@@ -17,6 +20,12 @@ class Employee extends Human
     private $salary;
     private $wageList = [];
 
+    /**
+     * Employee constructor.
+     * @param string $lastName
+     * @param int $salary
+     *
+     */
     public function __construct($lastName, $salary = false)
     {
         self::$count++;
@@ -26,11 +35,18 @@ class Employee extends Human
         $this->salary = $salary;
     }
 
+    /**
+     * @param int $salary
+     */
     public function setSalary($salary)
     {
         $this->salary = $salary;
     }
 
+    /**
+     * @param string $date
+     * @param int $value
+     */
     public function giveSalary($date, $value = false)
     {
         if ($value)
@@ -43,6 +59,7 @@ class Employee extends Human
 
     }
 
+
     public function checkWageList()
     {
         echo "Wage list of " . $this->getFullName() . ': <br>';
@@ -54,6 +71,9 @@ class Employee extends Human
         echo '<br>';
     }
 
+    /**
+     * @return string
+     */
     public function __toString()
     {
         return $this->getFullName() . '. Salary: ' . $this->salary;

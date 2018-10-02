@@ -9,8 +9,12 @@
 namespace lesson03;
 
 
+/**
+ * Class Student
+ */
 class Student extends Human
 {
+
     protected static $count = 0;
 
     const TYPE_OCHN = 1;
@@ -21,6 +25,12 @@ class Student extends Human
     private $marks = [];
 // ______________________________________
 
+    /**
+     * Student constructor.
+     * @param string $firstName
+     * @param string $lastName
+     * @param int $age
+     */
     public function __construct ($firstName = '', $lastName = '', $age = '')
     {
         self::$count++;
@@ -28,6 +38,9 @@ class Student extends Human
         parent::__construct($firstName, $lastName, $age);
     }
 
+    /**
+     * @param int $course
+     */
     public function setOchnoe($course = false)
     {
         $course ? $this->course = $course : $this->course;
@@ -49,10 +62,15 @@ class Student extends Human
         return $this->course;
     }
 
-    public function giveMark($value)
+    /**
+     * @param int $value
+     * @return array
+     */
+    public function giveMark($value):array
     {
         array_push($this->marks, $value);
     }
+
 
     public function getMarks()
     {

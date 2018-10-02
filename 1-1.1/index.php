@@ -17,6 +17,8 @@ require_once ('Manager.php');
 
 //-------------------------------------------
 
+
+
 $human1 = new Human('Petr', 'Borovskiy', 50);
 echo 'Human: ' . $human1->getFullName() . '<br>';
 
@@ -26,6 +28,7 @@ $student1->giveMark(5);
 $student1->giveMark(2);
 $student1->giveMark(3);
 $student1->giveMark(4);
+
 
 echo 'Student: ' . $student1->getFullName() . '<br>';
 echo 'age: ' . $student1->age . '<br>';
@@ -70,5 +73,4 @@ $human1->count();
 $student1->count();
 $employee1->count();
 $manager1->count();
-
 

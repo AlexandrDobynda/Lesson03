@@ -7,15 +7,25 @@
  */
 
 namespace lesson03;
-
+/**
+ * Class Manager
+ * @package lesson03
+ */
 
 class Manager extends Employee
 {
+
     protected static $count = 0;
     protected static $onlyEmployeeCount = 0;
-
+    /**
+     * @var array
+     */
     private $listOfEmloyees = [];
 
+    /**
+     * Manager constructor.
+     * @param string $lastName
+     */
     public function __construct( $lastName)
     {
         static::$onlyEmployeeCount++;
@@ -24,6 +34,10 @@ class Manager extends Employee
         parent::__construct($lastName);
     }
 
+    /**
+     * @param object $employeeId
+     *
+     */
     public function addEmployee($employeeId)
     {
 
