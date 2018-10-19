@@ -25,9 +25,9 @@ class Human
      * Human constructor.
      * @param string $firstName
      * @param string $lastName
-     * @param int|string $age
+     * @param int $age
      */
-    public function __construct ($firstName = '', $lastName = '', $age = '')
+    public function __construct (string $firstName, string $lastName, $age = null)
     {
         self::$count++;
 
@@ -39,7 +39,7 @@ class Human
     /**
      * @param string $firstName
      */
-    public function setFirstName($firstName)
+    public function setFirstName(string $firstName)
     {
         $this->firstName = $firstName;
     }
@@ -47,7 +47,7 @@ class Human
     /**
      * @param string $lastName
      */
-    public function setLastName($lastName)
+    public function setLastName(string $lastName)
     {
         $this->lastName = $lastName;
     }
@@ -55,17 +55,15 @@ class Human
     /**
      * @param int $age
      */
-    public function setAge($age)
+    public function setAge(int $age)
     {
         $this->age = $age;
     }
-    // ===========================
 
-    public function __get($name)
+    public function getLastName()
     {
-        return $this->$name;
+        return $this->lastName;
     }
-
     /**
      * @return string
      */
@@ -74,8 +72,20 @@ class Human
         return $this->firstName . ' ' . $this->lastName;
     }
 
-
-    public function count()
+    /**
+     * @return string
+     */
+    public function __toString()
     {
-        echo 'Human count: ' . self::$count . '<br>';
+        return $this->getFullName() . ', age: ' . $this->age;
+    }
+
+
+
+    /**
+     * @return string
+     */
+    public function getCountMessage()
+    {
+        return 'Human count: ' . self::$count . '<br>';
     }}

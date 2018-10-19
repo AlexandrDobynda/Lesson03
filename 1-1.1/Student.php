@@ -30,10 +30,13 @@ class Student extends Human
      * @param string $firstName
      * @param string $lastName
      * @param int $age
+     * @param int $course
      */
-    public function __construct ($firstName = '', $lastName = '', $age = '')
+    public function __construct (string $firstName, string $lastName, int $course, int $age = null)
     {
         self::$count++;
+
+        $this->course = $course;
 
         parent::__construct($firstName, $lastName, $age);
     }
@@ -41,22 +44,32 @@ class Student extends Human
     /**
      * @param int $course
      */
-    public function setOchnoe($course = false)
+    public function setOchnoe(int $course = null)
     {
-        $course ? $this->course = $course : $this->course;
+        if ($course) {
+            $this->course = $course;
+        }
         $this->type = self::TYPE_OCHN;
     }
-    public function setZaochnoe($course = false)
+    public function setZaochnoe(int $course = null)
     {
-        $course ? $this->course = $course : $this->course;
+        if ($course) {
+            $this->course = $course;
+        }
         $this->type = self::TYPE_ZAOCHN;
     }
 
+    /**
+     * @return string
+     */
     public function getType()
     {
         return $this->type == 1 ? 'Ochnoe' : 'Zaochnoe';
     }
 
+    /**
+     * @return int
+     */
     public function getCourse()
     {
         return $this->course;
@@ -64,15 +77,13 @@ class Student extends Human
 
     /**
      * @param int $value
-     * @return array
      */
-    public function giveMark($value):array
+    public function giveMark(int $value)
     {
         array_push($this->marks, $value);
     }
 
-
-    public function getMarks()
+    public function showMarks()
     {
         echo "Marks of " . $this->getFullName() . ': <br>';
 
@@ -84,9 +95,9 @@ class Student extends Human
         echo '<br><br>';
     }
 
-    public function count()
+    public function getCountMessage()
     {
-        echo 'Student count: ' . self::$count . '<br>';
-        echo 'Student count/all human: ' . self::$count . '/' . parent::$count  .  '<br>';
+        return 'Student count: ' . self::$count . '<br>' .
+         'Student count/all human: ' . self::$count . '/' . parent::$count  .  '<br>';
     }
 }

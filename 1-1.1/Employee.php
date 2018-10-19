@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Александр
- * Date: 02.10.2018
- * Time: 15:44
- */
+
 
 namespace lesson03;
 /**
@@ -17,28 +12,33 @@ class Employee extends Human
     protected static $count = 0;
     protected static $onlyEmployeeCount = 0;
 
+    /**
+     * @var int $salary
+     * @var array $wageList
+     */
     private $salary;
     private $wageList = [];
 
     /**
      * Employee constructor.
+     * @param string $firstName
      * @param string $lastName
      * @param int $salary
      *
      */
-    public function __construct($lastName, $salary = false)
+    public function __construct(string $firstName,string $lastName,int $salary = null)
     {
         self::$count++;
         static::$onlyEmployeeCount++;
 
-        parent::__construct('', $lastName);
+        parent::__construct($firstName, $lastName);
         $this->salary = $salary;
     }
 
     /**
      * @param int $salary
      */
-    public function setSalary($salary)
+    public function setSalary(int $salary)
     {
         $this->salary = $salary;
     }
@@ -47,7 +47,7 @@ class Employee extends Human
      * @param string $date
      * @param int $value
      */
-    public function giveSalary($date, $value = false)
+    public function giveSalary(string $date, int $value = null)
     {
         if ($value)
         {
@@ -60,7 +60,7 @@ class Employee extends Human
     }
 
 
-    public function checkWageList()
+    public function showWageList()
     {
         echo "Wage list of " . $this->getFullName() . ': <br>';
 
@@ -79,10 +79,10 @@ class Employee extends Human
         return $this->getFullName() . '. Salary: ' . $this->salary;
     }
 
-    public function count()
+    public function getCountMessage()
     {
-        echo 'Employee count: ' . self::$onlyEmployeeCount . '<br>';
-        echo 'Employee count/all human: ' . self::$onlyEmployeeCount . '/' . parent::$count  .  '<br>';
-        echo 'Employee count/all employee: ' . self::$onlyEmployeeCount . '/' . self::$count  .  '<br>';
+        return 'Employee count: ' . self::$onlyEmployeeCount . '<br>' .
+         'Employee count/all human: ' . self::$onlyEmployeeCount . '/' . parent::$count  .  '<br>' .
+         'Employee count/all employee: ' . self::$onlyEmployeeCount . '/' . self::$count  .  '<br>';
     }
 }
